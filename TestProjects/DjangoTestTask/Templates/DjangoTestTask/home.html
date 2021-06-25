@@ -1,0 +1,10 @@
+{% extends 'DjangoTestTask\base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href={% static 'DjangoTestTask\style.css' %}
+{% endblock %}
+
+{% block content%}
+<p>Let's get started</p>
+{% endblock %}
