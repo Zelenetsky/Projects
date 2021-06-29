@@ -5,7 +5,7 @@ from .forms import UrlDataCreateForm
 
 # Create your views here.
 def home(request):
-    context={"html_tag": 5}
+    context= {'values': [["html", 5], ["head", 8], ["p", 1]]}
     return render(request, "DjangoTestTask/home.html", context)
 
 class UrlDataCreate(CreateView):
