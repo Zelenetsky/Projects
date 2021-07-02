@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 # Create your models here.
     
 class UrlString(models.Model):
-    url_path = models.CharField(max_length=100, default='')
+    url_path = models.CharField(max_length=300, default='')
 
     def count_tags(self):
         # {'values': [["<html>", 5], ["<head>", 8], ["<p>", 1], ["<div>", 1]]}
