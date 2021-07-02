@@ -1,7 +1,7 @@
 from django import forms
-from .models import UrlData
+from .models import UrlString
 
-class UrlDataCreateForm(forms.ModelForm):
+class UrlStringCreateForm(forms.ModelForm):
     class Meta:
-        model = UrlData
+        model = UrlString
         fields = "__all__"
