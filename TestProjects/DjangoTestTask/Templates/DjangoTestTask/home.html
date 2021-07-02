@@ -35,6 +35,13 @@
 	{% graph "count_graph" "count" %} {# используем опции по умолчанию #}
 {% endgooglecharts %}
 
-<a href="{% url 'urldatacreate' %}"> Add tags (temporary) <a>
+<h1> Add URL: </h1>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Submit"/>
+</form>
+
+{# <a href="{% url 'urldatacreate' %}"> Add tags (temporary) <a> #}
 
 {% endblock %}
