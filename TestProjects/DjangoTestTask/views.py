@@ -8,9 +8,8 @@ import requests
 # Create your views here.
 def home(request):
      
-    Url_object = UrlString(url_path = "https://question-it.com/questions/5825/podschet-kolichestva-tegov-html-s-pomoschju-veb-skrebkov")
-    Url_object.save()
-    
+    Url_object = UrlString.objects.last()
+        
     context = {'values':[]}
     r = requests.get(Url_object.url_path)  
     soup=BeautifulSoup(r.content, features="html.parser")
@@ -19,10 +18,11 @@ def home(request):
     head_find = soup.find_all('head')
     p_find = soup.find_all('p')
     div_find = soup.find_all('div')
-    context['values'] = [["<html>", len(html_find)], ["<head>", len(head_find)], ["<p>", len(p_find)], ["<div>", len(div_find)]]
+    img_find = soup.find_all('img')
+    context['values'] = [["html", len(html_find)], ["head", len(head_find)], ["p", len(p_find)], ["div", len(div_find)], ["img", len(img_find)]]
     return render(request, "DjangoTestTask/home.html", context)
 
 class UrlStringCreate(CreateView):
     model = UrlString
-    template_name = 'DjangoTestTask/home.html'
+    template_name = 'DjangoTestTask/urldata_create_form.html'
     form_class = UrlStringCreateForm
