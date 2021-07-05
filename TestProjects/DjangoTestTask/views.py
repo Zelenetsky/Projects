@@ -8,7 +8,11 @@ import requests
 # Create your views here.
 def home(request):
      
-    Url_object = UrlString.objects.last()
+    if UrlString.objects.exists() == True:
+        Url_object = UrlString.objects.last()
+    else:
+        Url_object = UrlString(url_path="https://www.mysql.com/")
+        Url_object.save()
         
     context = {'values':[]}
     r = requests.get(Url_object.url_path)  
