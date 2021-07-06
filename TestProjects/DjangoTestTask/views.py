@@ -4,12 +4,17 @@ from .models import UrlString
 from .forms import UrlStringCreateForm
 from bs4 import BeautifulSoup
 import requests
+import validators
 
 # Create your views here.
 def home(request):
      
     if UrlString.objects.exists() == True:
-        Url_object = UrlString.objects.last()
+    # https://www.programcreek.com/python/example/68240/django.core.validators.URLValidator    
+        if validators.url(UrlString.objects.last().url_path):
+            Url_object = UrlString.objects.last()
+        else:
+            return ValueError()
     else:
         Url_object = UrlString(url_path="https://www.mysql.com/")
         Url_object.save()
